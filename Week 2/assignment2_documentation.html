@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandelbrot Script Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f7fa;
+            color: #1f2933;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1, h2, h3 {
+            color: #102a43;
+        }
+        code {
+            background: #eef2f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .note {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mandelbrot Set Visualization</h1>
+
+        <p>This script generates a visual approximation of the Mandelbrot set using Python, NumPy, and Matplotlib. It creates a grid of complex numbers, checks whether they stay bounded under a repeated mathematical transformation, and then displays the result as a 2D image.</p>
+
+        <h2>Overview</h2>
+        <p>The program uses the Mandelbrot iteration formula:</p>
+        <pre>z = z^2 + c</pre>
+        <p>where <code>c</code> is a complex number representing a point in the plane. Points that remain bounded after many iterations are considered part of the Mandelbrot set, while others diverge and are treated as outside the set.</p>
+
+        <h2>Imported Libraries</h2>
+        <ul>
+            <li><code>numpy as np</code>: used for numerical calculations and array operations.</li>
+            <li><code>matplotlib.pyplot as plt</code>: used for plotting the final image.</li>
+            <li><code>matplotlib.patches as patches</code>: imported but not actually used in this script.</li>
+        </ul>
+
+        <h2>Function 1: <code>mandelbroth(n, x, y)</code></h2>
+        <p>This function computes the Mandelbrot sequence for one complex number <code>c = x + yi</code>.</p>
+
+        <h3>What it does</h3>
+        <ul>
+            <li>Creates the complex constant <code>c</code> from the given real and imaginary values.</li>
+            <li>Initializes an array with a single value <code>0</code>.</li>
+            <li>Repeats the process <code>n</code> times:</li>
+            <ul>
+                <li>it appends the next value in the sequence</li>
+                <li>each new value is computed as <code>previous_value^2 + c</code></li>
+            </ul>
+            <li>Returns the final generated array.</li>
+        </ul>
+
+        <p>In simpler terms, it simulates the iterative process of the Mandelbrot formula for a single point.</p>
+
+        <h2>Function 2: <code>draw_mandelbroth(x, y)</code></h2>
+        <p>This function builds a 2D image of the Mandelbrot set in an <code>x by y</code> grid.</p>
+
+        <h3>What it does</h3>
+        <ul>
+            <li>Creates an array of size <code>x * y</code> filled with ones and reshapes it into a matrix.</li>
+            <li>Loops across a set of complex numbers within the region from roughly <code>-1.5</code> to <code>0.5</code> on the real axis and <code>-1</code> to <code>1</code> on the imaginary axis.</li>
+            <li>For each point, it calculates the Mandelbrot sequence and checks whether the value at index <code>100</code> has magnitude less than 2.</li>
+            <li>If the output remains bounded, the corresponding pixel is set to <code>0</code>; otherwise it remains <code>1</code>.</li>
+            <li>Finally, it calls <code>plt.imshow(a)</code> to display the generated image.</li>
+        </ul>
+
+        <p>The condition:</p>
+        <pre>if abs(mandelbroth(101, n1, n2)[100]) &lt; 2:</pre>
+        <p>is a common test used to estimate whether a complex number belongs to the Mandelbrot set after many iterations. If the value stays within a radius of 2, the point is considered part of the set.</p>
+
+        <h2>How the image is created</h2>
+        <p>The script calls:</p>
+        <pre>draw_mandelbroth(200, 200)</pre>
+        <p>This creates a <code>200 x 200</code> plot of points in the complex plane. Each pixel represents a single complex number. The script then colors the grid based on whether that sample is inside or outside the Mandelbrot set.</p>
+
+        <div class="note">
+            <strong>Note:</strong> The function name is spelled <code>mandelbroth</code> instead of the more common <code>Mandelbrot</code>. It is still the same concept and the script works as intended for this demonstration.
+        </div>
+
+        <h2>Result</h2>
+        <p>When the script is run, it generates a visual representation of the Mandelbrot set in a Matplotlib window. The resulting pattern is a famous fractal shape with a highly detailed boundary.</p>
+    </div>
+</body>
+</html>
