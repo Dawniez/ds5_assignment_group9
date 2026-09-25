@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assignment1.py Documentation</title>
+    <style>
+        :root {
+            --ink: #17212b;
+            --muted: #536273;
+            --paper: #f7f9fb;
+            --panel: #ffffff;
+            --line: #d8e0e8;
+            --accent: #0b7285;
+            --accent-dark: #075766;
+            --warning-bg: #fff7e6;
+            --warning-line: #e5a93d;
+            --code: #17212b;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.65;
+        }
+
+        header {
+            color: #ffffff;
+            background: linear-gradient(135deg, #075766, #0b7285);
+            padding: 3.5rem 1.5rem 3rem;
+        }
+
+        header .wrap,
+        main,
+        footer {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        header .wrap { padding: 0 1rem; }
+
+        .eyebrow {
+            margin: 0 0 0.5rem;
+            color: #a9e7eb;
+            font: 700 0.8rem/1.2 Arial, sans-serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1, h2, h3 { line-height: 1.2; }
+        h1 { max-width: 700px; margin: 0; font-size: clamp(2.2rem, 5vw, 4.2rem); }
+        header p { max-width: 700px; margin: 1rem 0 0; color: #e5f7f8; font-size: 1.1rem; }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.96);
+            padding: 0.7rem 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        nav .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        nav a { color: var(--accent-dark); font-size: 0.92rem; font-weight: 700; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+
+        main { padding: 2rem 1.5rem 3rem; }
+        section { margin: 0 0 3rem; }
+        h2 { margin-top: 0; font-size: 2rem; }
+        h3 { margin-bottom: 0.35rem; color: var(--accent-dark); font-size: 1.35rem; }
+        p { max-width: 850px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: var(--panel);
+            padding: 1.25rem;
+            box-shadow: 0 5px 18px rgba(23, 33, 43, 0.05);
+        }
+
+        .panel h3 { margin-top: 0; }
+        .panel p:last-child { margin-bottom: 0; }
+
+        code, pre, .signature { font-family: Consolas, "Courier New", monospace; }
+        code { color: var(--accent-dark); font-size: 0.92em; }
+
+        pre {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 6px;
+            background: var(--code);
+            color: #e9f4f5;
+            padding: 1.1rem;
+            line-height: 1.5;
+            font-size: 0.88rem;
+        }
+
+        .flow {
+            counter-reset: step;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .flow .step {
+            display: grid;
+            grid-template-columns: 2.5rem 1fr;
+            gap: 0.8rem;
+            align-items: start;
+            border-left: 3px solid #9ed9df;
+            padding: 0.7rem 1rem;
+            background: #eef8f9;
+        }
+
+        .flow .step::before {
+            counter-increment: step;
+            content: counter(step);
+            display: grid;
+            place-items: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            color: #ffffff;
+            background: var(--accent);
+            font: 700 0.9rem Arial, sans-serif;
+        }
+
+        .flow strong { display: block; margin-bottom: 0.15rem; }
+        .flow p { margin: 0; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--panel);
+            font-size: 0.96rem;
+        }
+
+        th, td { border: 1px solid var(--line); padding: 0.8rem; text-align: left; vertical-align: top; }
+        th { color: #ffffff; background: var(--accent-dark); font-family: Arial, sans-serif; }
+        tr:nth-child(even) { background: #f2f7f8; }
+        .signature { margin: 0; color: var(--accent-dark); font-weight: 700; }
+
+        .warning {
+            border-left: 5px solid var(--warning-line);
+            background: var(--warning-bg);
+            padding: 1rem 1.2rem;
+        }
+
+        .warning h3 { color: #895b0a; margin-top: 0; }
+        li { margin: 0.4rem 0; }
+        footer { border-top: 1px solid var(--line); color: var(--muted); padding: 1rem 1.5rem 2rem; font-size: 0.9rem; }
+
+        @media (max-width: 600px) {
+            header { padding-top: 2.5rem; }
+            main { padding-right: 1rem; padding-left: 1rem; }
+            th, td { padding: 0.6rem; }
+            table { display: block; overflow-x: auto; white-space: normal; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <p class="eyebrow">Python assignment documentation</p>
+            <h1>assignment1.py</h1>
+            <p>A guide to the CSV student-grade report script, including its workflow, functions, Python operations, expected data, and current limitations.</p>
+        </div>
+    </header>
+
+    <nav aria-label="Documentation sections">
+        <div class="links">
+            <a href="#overview">Overview</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#api">Functions</a>
+            <a href="#operations">Operations</a>
+            <a href="#example">Example</a>
+            <a href="#limitations">Limitations</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p><code>assignment1.py</code> reads student records from a CSV file. It calculates the average grade for all records, selects students whose grades are at least 80.0, and prints a report containing those students.</p>
+            <div class="grid">
+                <article class="panel">
+                    <h3>Input</h3>
+                    <p>A path entered by the user and a CSV file with <code>Name</code> and <code>Grade</code> columns.</p>
+                </article>
+                <article class="panel">
+                    <h3>Processing</h3>
+                    <p>Rows are stored as dictionaries, grades are converted to floating-point numbers, and records are filtered.</p>
+                </article>
+                <article class="panel">
+                    <h3>Output</h3>
+                    <p>The overall average grade and a report of qualifying students are printed in the terminal.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="workflow">
+            <h2>Program Workflow</h2>
+            <div class="flow">
+                <div class="step"><div><strong>Ask for the file path</strong><p><code>input()</code> displays a prompt and stores the user's response in <code>file_path</code>.</p></div></div>
+                <div class="step"><div><strong>Open and read the CSV file</strong><p><code>open()</code> opens the file. <code>csv.DictReader</code> turns each row into a dictionary whose keys come from the header row.</p></div></div>
+                <div class="step"><div><strong>Build the records list</strong><p>Each dictionary is added to <code>records</code> with <code>append()</code>.</p></div></div>
+                <div class="step"><div><strong>Find qualifying students</strong><p><code>starstudents(records)</code> returns records with grades greater than or equal to 80.0.</p></div></div>
+                <div class="step"><div><strong>Calculate the average</strong><p><code>avg_grade(records)</code> converts each grade to a number, adds the grades, and divides by the number of records.</p></div></div>
+                <div class="step"><div><strong>Print the results</strong><p><code>avg_grade_print()</code> prints the average. <code>student_report_print()</code> prints each qualifying student's name and grade.</p></div></div>
+            </div>
+
+            <pre><code>records = read CSV rows
+filtered_records = starstudents(records)
+average = avg_grade(records)
+avg_grade_print(average)
+student_report_print(filtered_records)</code></pre>
+        </section>
+
+        <section id="api">
+            <h2>Function Reference</h2>
+            <article class="panel">
+                <h3>avg_grade</h3>
+                <p class="signature">avg_grade(inpt)</p>
+                <p>Calculates the average grade of the supplied student records.</p>
+                <table>
+                    <tr><th>Item</th><th>Description</th></tr>
+                    <tr><td>Parameter</td><td><code>inpt</code>: an iterable of dictionaries containing a <code>Grade</code> value.</td></tr>
+                    <tr><td>Return value</td><td>A number representing the average grade.</td></tr>
+                    <tr><td>How it works</td><td>A generator expression converts each <code>Grade</code> value with <code>float()</code>. <code>sum()</code> adds the converted values, and the result is divided by <code>len(records)</code>.</td></tr>
+                    <tr><td>Side effects</td><td>None, but it depends on the global <code>records</code> list for the divisor.</td></tr>
+                </table>
+            </article>
+
+            <article class="panel">
+                <h3>avg_grade_print</h3>
+                <p class="signature">avg_grade_print(inpt)</p>
+                <p>Displays the calculated average grade in a formatted message.</p>
+                <table>
+                    <tr><th>Item</th><th>Description</th></tr>
+                    <tr><td>Parameter</td><td><code>inpt</code>: normally the value returned by <code>avg_grade()</code>.</td></tr>
+                    <tr><td>Return value</td><td>None. The function prints text instead of returning a value.</td></tr>
+                    <tr><td>How it works</td><td>An f-string inserts the value into <code>Average Grade: ...</code>, then a separator line is printed.</td></tr>
+                    <tr><td>Side effects</td><td>Writes two lines to standard output.</td></tr>
+                </table>
+            </article>
+
+            <article class="panel">
+                <h3>starstudents</h3>
+                <p class="signature">starstudents(inpt)</p>
+                <p>Creates a list containing students whose grade meets the threshold.</p>
+                <table>
+                    <tr><th>Item</th><th>Description</th></tr>
+                    <tr><td>Parameter</td><td><code>inpt</code>: an iterable of dictionaries containing a <code>Grade</code> value.</td></tr>
+                    <tr><td>Return value</td><td>A new list of records where <code>float(item['Grade']) &gt;= 80.0</code>.</td></tr>
+                    <tr><td>How it works</td><td>A list comprehension examines each item, converts its grade to a number, and keeps the item when the condition is true.</td></tr>
+                    <tr><td>Side effects</td><td>None. The original input records are not changed.</td></tr>
+                </table>
+            </article>
+
+            <article class="panel">
+                <h3>student_report_print</h3>
+                <p class="signature">student_report_print(inpt)</p>
+                <p>Prints the name and grade for every record in the supplied list.</p>
+                <table>
+                    <tr><th>Item</th><th>Description</th></tr>
+                    <tr><td>Parameter</td><td><code>inpt</code>: an iterable of dictionaries with <code>Name</code> and <code>Grade</code> keys.</td></tr>
+                    <tr><td>Return value</td><td>None. The function prints the report.</td></tr>
+                    <tr><td>How it works</td><td>A <code>for</code> loop visits each dictionary. Dictionary indexing retrieves <code>Name</code> and <code>Grade</code>, and f-strings format each value.</td></tr>
+                    <tr><td>Side effects</td><td>Writes the report heading, each student, and separators to standard output.</td></tr>
+                </table>
+            </article>
+        </section>
+
+        <section id="operations">
+            <h2>Python Operations Used</h2>
+            <table>
+                <tr><th>Operation</th><th>Purpose in this file</th></tr>
+                <tr><td><code>input(prompt)</code></td><td>Requests the CSV path from the user and returns the response as text.</td></tr>
+                <tr><td><code>open(path, 'r')</code></td><td>Opens a file for reading. The <code>with</code> statement closes it automatically afterward.</td></tr>
+                <tr><td><code>csv.DictReader(file)</code></td><td>Reads CSV rows as dictionaries using the first row as column names.</td></tr>
+                <tr><td><code>for</code> loop</td><td>Repeats an action for each CSV row or student record.</td></tr>
+                <tr><td><code>list.append(value)</code></td><td>Adds a row dictionary to the end of <code>records</code>.</td></tr>
+                <tr><td><code>float(value)</code></td><td>Converts grade text such as <code>85</code> into a number that can be calculated.</td></tr>
+                <tr><td><code>sum(values)</code></td><td>Adds all converted grades together.</td></tr>
+                <tr><td><code>len(values)</code></td><td>Counts records so the total can be divided by the number of students.</td></tr>
+                <tr><td>Generator expression</td><td><code>float(record['Grade']) for record in inpt</code> produces converted grades one at a time for <code>sum()</code>.</td></tr>
+                <tr><td>List comprehension</td><td>Builds the filtered list in <code>starstudents()</code> from records that meet the condition.</td></tr>
+                <tr><td>Dictionary indexing</td><td>Expressions such as <code>record['Name']</code> retrieve values from a CSV row.</td></tr>
+                <tr><td>F-string</td><td>Inserts values into output text, for example <code>f"Name: {record['Name']}"</code>.</td></tr>
+                <tr><td><code>print()</code></td><td>Writes headings, values, and separators to the terminal.</td></tr>
+            </table>
+        </section>
+
+        <section id="example">
+            <h2>Example Data and Output</h2>
+            <h3>Example CSV file</h3>
+            <pre><code>Name,Grade
+Aisha,92
+Ben,76
+Carlos,80
+Dina,68</code></pre>
+            <h3>Expected output after the missing import is supplied</h3>
+            <pre><code>Average Grade: 79.0
+--------------------
+Student Report
+--------------
+Name: Aisha
+Grade: 92
+--------------------
+Name: Carlos
+Grade: 80
+--------------------</code></pre>
+            <p>Carlos is included because the condition is <code>&gt;= 80.0</code>, which includes exactly 80.0.</p>
+        </section>
+
+        <section id="limitations">
+            <h2>Limitations and Observations</h2>
+            <div class="warning">
+                <h3>Important source behavior</h3>
+                <ul>
+                    <li>The file calls <code>csv.DictReader</code> but does not contain <code>import csv</code>. As written, execution raises <code>NameError: name 'csv' is not defined</code> before the functions are called.</li>
+                    <li><code>avg_grade()</code> divides by the global <code>records</code> list rather than by <code>inpt</code>. It works for the current call, but it makes the function depend on outside state.</li>
+                    <li>If the CSV contains no data rows, the average calculation divides by zero.</li>
+                    <li>The input, file reading, calculations, and printing happen at the top level. Importing the file would immediately prompt for a path and run the report.</li>
+                    <li>The comment says grades should be higher than 80.0, but the implemented condition includes grades equal to 80.0.</li>
+                    <li>Every row must contain the expected <code>Name</code> and <code>Grade</code> columns, and each grade must be convertible to a number.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Documentation for <code>Week 2/assignment1.py</code>. This page describes the source as it currently exists and does not modify the Python file.
+    </footer>
+</body>
+</html>
