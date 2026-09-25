@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS5 Assignments</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f4f7fb, #eaf1ff);
+      color: #1f2937;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: min(820px, 90%);
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2.2rem;
+      color: #1d4ed8;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+      color: #374151;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      display: block;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 14px;
+      padding: 24px 18px;
+      text-decoration: none;
+      color: #111827;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.14);
+    }
+
+    .card strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #1e3a8a;
+    }
+
+    .card span {
+      color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exercise 1 & 2 Overview</h1>
+    <p>Select one of the exercises below to open the corresponding HTML page.</p>
+
+    <div class="links">
+      <a class="card" href="Week 2/assignment1.html" target="_blank">
+        <strong>Exercise 1</strong>
+        <span>Open the first exercise page.</span>
+      </a>
+
+      <a class="card" href="Week 2/assignment2_documentation.html" target="_blank">
+        <strong>Exercise 2</strong>
+        <span>Open the second exercise page.</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
